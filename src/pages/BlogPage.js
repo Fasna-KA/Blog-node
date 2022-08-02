@@ -1,12 +1,8 @@
 import React,{useState,useEffect} from "react";
 import Card from "../components/Card";
 import SmallCard from "../components/SmallCard";
-// import { useDetailsContextConsumer } from "../Context/detailsContext";
+
 const BlogPage = ({category}) => {
-  // const {details} = useDetailsContextConsumer();
-  // const arrInd = ()=>{ return Math.floor(Math.random() * 50)};
-  // const topposts = [details[arrInd()], details[arrInd()], details[arrInd()], details[arrInd()]] 
-  // const topposts = [data[arrInd()], data[arrInd()], data[arrInd()], data[arrInd()]] 
 
   const[data,setData]=useState([])
   
@@ -19,7 +15,7 @@ const BlogPage = ({category}) => {
     <div className="category_page bollywood_container">
       <div className="column_main">
         <h1 className="title head-title">{category}</h1>
-        {data
+        {data.sort(()=> Math.random() - Math.random()).slice(5)
           .filter((article) => {
             return article.category === category;
           })
@@ -35,7 +31,7 @@ const BlogPage = ({category}) => {
       </div>
       <div className="sub_column">
         <h1 className="side_title title">Top Posts</h1>
-        {data
+        {data.sort(()=> Math.random() - Math.random()).slice(0,10)
           .map((n) => (
             <SmallCard
               key={n.id}

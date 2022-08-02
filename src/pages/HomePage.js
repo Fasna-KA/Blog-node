@@ -3,22 +3,16 @@ import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import SmallCard from "../components/SmallCard";
 import CardHome from "../components/CardHome";
-// import {useDetailsContextConsumer} from '../Context/detailsContext';//HOC
 
 const HomePage = () => {
 
-  // const {details} = useDetailsContextConsumer();
   const[data,setData]=useState([])
   
   useEffect(() =>{
     fetch(`https://fasna.herokuapp.com/api/details`).then (res=>res.json()).then(data=> setData(data))
 
   },[])
-  // const arrInd = ()=>{ return Math.floor(Math.random() * 50)};//to get random data
-  // const latest = [details[arrInd()], details[arrInd()], details[arrInd()]]
-  // const latest2 = [details[arrInd()], details[arrInd()], details[arrInd()]]
-  // const latestarticles = [details[arrInd()], details[arrInd()], details[arrInd()]]
-  // const topposts = [details[arrInd()], details[arrInd()],[details[arrInd()],  details[arrInd()]]
+
   return (
     <div className="home_container">
       <div className="banner-image">
@@ -47,7 +41,7 @@ const HomePage = () => {
       <div className="latest_news">
         <h1 className="title">The Latest</h1>
         <div className="row_container">
-            { data
+            { data.sort(()=> Math.random() - Math.random()).slice(0,4)
               .map((n) => (
                 <CardHome 
                   key={n.id}
@@ -66,7 +60,7 @@ const HomePage = () => {
       <div className="category_page">
         <div className="column_main">
           <h1 className="title head-title">Latest Article</h1>
-          { data
+          { data.sort(()=> Math.random() - Math.random()).slice(0,5)
             .map((n) => (
               <Card
                 key={n.id}
@@ -80,7 +74,7 @@ const HomePage = () => {
         </div>
         <div className="sub_column">
           <h1 className="side_title title">Top Posts</h1>
-          {data
+          {data.sort(()=> Math.random() - Math.random()).slice(0,5)
             .map((n) => (
               <SmallCard
                 key={n.id}
@@ -101,7 +95,7 @@ const HomePage = () => {
         <h1 className="title">The Latest</h1>
         <div className="row_container">
           
-            {data
+            {data.sort(()=> Math.random() - Math.random()).slice(0,4)
               .map((n) => (
                 <CardHome 
                   key={n.id}

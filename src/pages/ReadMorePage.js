@@ -34,7 +34,7 @@ console.log(title)
         <br/>
       <div style={{width:'85%', margin: '10px auto'}}>
        <h1 className="title head-title"> Read More From {category}</h1>  
-       {data.map((n)=>{ return(
+       {data.sort(()=> Math.random() - Math.random()).slice(0,3).map((n)=>{ return(
          <Card
          key={n.id}
          articleid={n.id}
